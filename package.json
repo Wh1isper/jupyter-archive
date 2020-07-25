@@ -38,6 +38,7 @@
     "watch": "tsc -w"
   },
   "dependencies": {
+    "@i18n-chain/core": "^0.8.0",
     "@jupyterlab/application": "^2.0.2",
     "@jupyterlab/filebrowser": "^2.0.2"
   },

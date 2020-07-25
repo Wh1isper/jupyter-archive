@@ -11,6 +11,18 @@ import { each } from "@lumino/algorithm";
 import { IDisposable } from "@lumino/disposable";
 import { Menu } from "@lumino/widgets";
 
+// wf i18n by jzs
+
+import { createI18n } from '@i18n-chain/core';
+import zh from './locales/zh';
+
+const i18n = createI18n({
+  defaultLocale: {
+    key: 'zh',
+    values: zh,
+  },
+});
+
 const DIRECTORIES_URL = "directories";
 const EXTRACT_ARCHVE_URL = "extract-archive";
 type ArchiveFormat =
@@ -153,12 +165,12 @@ const extension: JupyterFrontEndPlugin<void> = {
     const archiveFolder = new Menu({
       commands
     });
-    archiveFolder.title.label = "Download As";
+    archiveFolder.title.label = i18n.archiveFolder;
     archiveFolder.title.iconClass = "jp-MaterialIcon jp-DownloadIcon";
     const archiveCurrentFolder = new Menu({
       commands
     });
-    archiveCurrentFolder.title.label = "Download Current Folder As";
+    archiveCurrentFolder.title.label = i18n.archiveCurrentFolder;
     archiveCurrentFolder.title.iconClass = "jp-MaterialIcon jp-DownloadIcon";
 
     ["zip", "tar.bz2", "tar.gz", "tar.xz"].forEach(format => {
@@ -270,7 +282,7 @@ const extension: JupyterFrontEndPlugin<void> = {
       label: args => {
         const format = (args["format"] as ArchiveFormat) || "";
         const label = format.replace(".", " ").toLocaleUpperCase();
-        return label ? `${label} Archive` : "Download as an Archive";
+        return label ? `${label} ${i18n.Archive}` : i18n.downloadArchive;
       }
     });
 
@@ -302,7 +314,7 @@ const extension: JupyterFrontEndPlugin<void> = {
         }
         return visible;
       },
-      label: "Extract Archive"
+      label: i18n.extractArchive
     });
 
     app.contextMenu.addItem({
@@ -333,8 +345,8 @@ const extension: JupyterFrontEndPlugin<void> = {
         const format = (args["format"] as ArchiveFormat) || "";
         const label = format.replace(".", " ").toLocaleUpperCase();
         return label
-          ? `${label} Archive`
-          : "Download Current Folder as an Archive";
+          ? `${label} ${i18n.Archive}`
+          : i18n.downloadArchiveCurrentFolder;
       }
     });
   }
