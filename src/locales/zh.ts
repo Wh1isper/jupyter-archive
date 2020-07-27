@@ -4,11 +4,11 @@ const zh: Locale = {
   name: 'chinese',
 
   archiveFolder: "下载为",
-  archiveCurrentFolder:"下载当前文件夹为",
+  archiveCurrentFolder:"下载全部为",
   Archive:"压缩包",
-  downloadArchive:"作为压缩包下载",
+  downloadArchive:"下载",
   extractArchive: "提取压缩包",
-  downloadArchiveCurrentFolder:"将当前文件夹作为压缩包下载",
+  downloadArchiveCurrentFolder:"下载全部",
 };
 
 export default zh;
